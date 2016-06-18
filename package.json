@@ -1,5 +1,6 @@
 {
   "name": "simple-storage-contract",
+  "version": "1.0.0",
   "license": "Unlicense",
   "repository": "https://github.com/makevoid/simple_storage.sol"
 }
