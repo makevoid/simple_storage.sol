@@ -6,7 +6,9 @@ Then, to use it in your app (DAPP), you just need to install it:
 
     npm i --save simple-storage-contract
 
-And use it:
+(you have to have a `package.json` file with at least `{}` written in it)
+
+And then you can use it:
 
 ```js
 const web3 = // ... connect with your provider here
