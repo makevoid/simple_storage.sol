@@ -8,27 +8,44 @@ Then, to use it in your app (DAPP), you just need to install it:
 
 (you have to have a `package.json` file with at least `{}` written in it)
 
-And then you can use it:
+And then you can use it (examples are in coffeescript).
 
-```js
-const web3 = // ... connect with your provider here
-const solc = require('solc')
-const fs   = require('fs')
+Compilation:
 
-const contractCode = fs.readFileSync('./node_modules/simple-storage-contract/simple_storage.sol')
+```coffee
+# compile.coffee
 
-const abi = solc.compileSolidity(contractCode)
-// TODO
+solc = require 'solc'
+fs   = require 'fs'
+c    = console
 
-// deploy // call method // call public method on contract address
 
+code = fs.readFileSync "./node_modules/simple-storage-contract/simple_storage.sol"
+code = code.toString()
+
+contracts = solc.compile code
+contracts = JSON.stringify contracts
+fs.writeFileSync './config/contracts.json', contracts
+
+```
+
+Usage:
+
+TODO: example to load the contract and call the set and get methods
+
+```coffee
+# deploy contract
+
+# call public methods on contract address
+#   - set
+#   - data (property)
 ```
 
 You can use this simple module as base for your own npm module.
 
 The idea is that you can share contracts with others by just pushing them to `npm` and being able to resolve their dependencies and update them via `npm install`.
 
-You can use `cp` commands or symlinks to have all the contracts in the same directory so they can be compiled in one go by `solc` (c++ version) too.
+You can use `cp` commands or symlinks to have all the contracts in the same directory so they can be compiled in one go by `solc` (c++ version) too or use the `solc` NPM module like in the example above.
 
 
 Enjoy,
